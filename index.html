@@ -125,10 +125,10 @@
             // });
             // const data = await response.json();
 
-            if (data.code === 0) {
-                alert("Can't mint this token, already exists.");
-                return;
-            }
+            // if (data.code === 0) {
+            //     alert("Can't mint this token, already exists.");
+            //     return;
+            // }
 
             // Fetch the recommended fee
             const fastestFee = await getRecommendedFee();
