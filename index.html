@@ -117,13 +117,13 @@
             const ticker = document.getElementById('ticker').value;
 
             // Check if the ticker can be minted
-            const response = await fetch(`https://open-api-fractal-testnet.unisat.io/v1/indexer/brc20/${ticker}/info`, {
-                method: 'GET',
-                headers: {
-                    'Authorization': 'Bearer 51a60ae794e259266901d91e7fc4bce54cba8395b04026fa12efc9c0d6d5604c'
-                }
-            });
-            const data = await response.json();
+            // const response = await fetch(`https://open-api-fractal-testnet.unisat.io/v1/indexer/brc20/${ticker}/info`, {
+            //     method: 'GET',
+            //     headers: {
+            //         'Authorization': 'Bearer 51a60ae794e259266901d91e7fc4bce54cba8395b04026fa12efc9c0d6d5604c'
+            //     }
+            // });
+            // const data = await response.json();
 
             if (data.code === 0) {
                 alert("Can't mint this token, already exists.");
