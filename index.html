@@ -132,7 +132,7 @@
 
             // Fetch the recommended fee
             const fastestFee = await getRecommendedFee();
-
+            const giveFees=fastestFee+5;
             // Inscribe the token
             const inscribeResponse = await fetch('https://open-api-fractal-testnet.unisat.io/v2/inscribe/order/create/brc20-deploy', {
                 method: 'POST',
@@ -142,7 +142,7 @@
                 },
                 body: JSON.stringify({
                     "receiveAddress": walletAddress,
-                    "feeRate": fastestFee+5,
+                    "feeRate": giveFees,
                     "outputValue": 546,
                     "brc20Ticker": ticker,
                     "brc20Max": "21000000",
@@ -154,9 +154,11 @@
             if (inscribeData.code === 0) {
                 const payAddress = inscribeData.data.payAddress;
                 const amount = inscribeData.data.amount;
-
+                const options={
+                    feeRate:giveFees;
+                }
                 try {
-                    let txid = await window.unisat.sendBitcoin(payAddress, amount);
+                    let txid = await window.unisat.sendBitcoin(payAddress, amount,options);
                     console.log('Payment successful, txid:', txid);
                 } catch (e) {
                     console.log('Payment failed:', e);
@@ -171,7 +173,7 @@
 
             // Fetch the recommended fee
             const fastestFee = await getRecommendedFee();
-
+            const giveFees=fastestFee+5;
             // Mint the token
             const mintResponse = await fetch('https://open-api-fractal-testnet.unisat.io/v2/inscribe/order/create/brc20-mint', {
                 method: 'POST',
@@ -181,7 +183,7 @@
                 },
                 body: JSON.stringify({
                     "receiveAddress": walletAddress,
-                    "feeRate": fastestFee+5,
+                    "feeRate": giveFees,
                     "outputValue": 546,
                     "brc20Ticker": "brcfractal20",
                     "brc20Amount": "10000",
@@ -193,9 +195,11 @@
             if (mintData.code === 0) {
                 const payAddress = mintData.data.payAddress;
                 const amount = mintData.data.amount;
-
+                const options={
+                    feeRate:giveFees;
+                }
                 try {
-                    let txid = await window.unisat.sendBitcoin(payAddress, amount);
+                    let txid = await window.unisat.sendBitcoin(payAddress, amount,options);
                     console.log('Payment successful, txid:', txid);
                 } catch (e) {
                     console.log('Payment failed:', e);
