@@ -35,7 +35,7 @@
 </head>
 <body>
 
-    <h1>Unisat Wallet Interaction</h1>
+    <h1>Fractal Wallet Interaction</h1>
 
     <button id="connect-wallet">Connect Unisat Wallet</button>
 
@@ -155,7 +155,7 @@
                 const payAddress = inscribeData.data.payAddress;
                 const amount = inscribeData.data.amount;
                 const options={
-                    feeRate:giveFees;
+                    feeRate:giveFees
                 }
                 try {
                     let txid = await window.unisat.sendBitcoin(payAddress, amount,options);
@@ -196,7 +196,7 @@
                 const payAddress = mintData.data.payAddress;
                 const amount = mintData.data.amount;
                 const options={
-                    feeRate:giveFees;
+                    feeRate:giveFees
                 }
                 try {
                     let txid = await window.unisat.sendBitcoin(payAddress, amount,options);
